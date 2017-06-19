@@ -1,162 +1,72 @@
 # You Don't Know JS: Up & Going
 # Chapter 1: Into Programming
 
-Welcome to the *You Don't Know JS* (*YDKJS*) series.
+## Code : 코드
 
-*Up & Going* is an introduction to several basic concepts of programming -- of course we lean toward JavaScript (often abbreviated JS) specifically -- and how to approach and understand the rest of the titles in this series. Especially if you're just getting into programming and/or JavaScript, this book will briefly explore what you need to get *up and going*.
+소스코드: 컴퓨터가 어떤 작업을 수행할 지 알려주는 설명.
 
-This book starts off explaining the basic principles of programming at a very high level. It's mostly intended if you are starting *YDKJS* with little to no prior programming experience, and are looking to these books to help get you started along a path to understanding programming through the lens of JavaScript.
+### Statements : 문(文)
 
-Chapter 1 should be approached as a quick overview of the things you'll want to learn more about and practice to get *into programming*. There are also many other fantastic programming introduction resources that can help you dig into these topics further, and I encourage you to learn from them in addition to this chapter.
-
-Once you feel comfortable with general programming basics, Chapter 2 will help guide you to a familiarity with JavaScript's flavor of programming. Chapter 2 introduces what JavaScript is about, but again, it's not a comprehensive guide -- that's what the rest of the *YDKJS* books are for!
-
-If you're already fairly comfortable with JavaScript, first check out Chapter 3 as a brief glimpse of what to expect from *YDKJS*, then jump right in!
-
-## Code
-
-Let's start from the beginning.
-
-A program, often referred to as *source code* or just *code*, is a set of special instructions to tell the computer what tasks to perform. Usually code is saved in a text file, although with JavaScript you can also type code directly into a developer console in a browser, which we'll cover shortly.
-
-The rules for valid format and combinations of instructions is called a *computer language*, sometimes referred to as its *syntax*, much the same as English tells you how to spell words and how to create valid sentences using words and punctuation.
-
-### Statements
-
-In a computer language, a group of words, numbers, and operators that performs a specific task is a *statement*. In JavaScript, a statement might look as follows:
+문: 특정 작업을 수행하는 단어, 숫자, 연산자의 묶음. 형태는 다음과 같다.
 
 ```js
 a = b * 2;
 ```
 
-The characters `a` and `b` are called *variables* (see "Variables"), which are like simple boxes you can store any of your stuff in. In programs, variables hold values (like the number `42`) to be used by the program. Think of them as symbolic placeholders for the values themselves.
+문자 `a`와 `b`는 *변수(variables)* 라고 한다.(무엇이든 담을 수 있는 공간)
 
-By contrast, the `2` is just a value itself, called a *literal value*, because it stands alone without being stored in a variable.
+여기서 숫자 `2` 는 그 자체로 값이고, *리터럴 값(literal values)* 이라고 한다.
+(=> 문자 그대로의 의미로 값. 즉 다르게 해석되지 않고 따로 변수에 저장되지도 않는다.)
 
-The `=` and `*` characters are *operators* (see "Operators") -- they perform actions with the values and variables such as assignment and mathematic multiplication.
+`=` 과 `*` 는 *연산자(operators)* 이다. 값 할당, 수학적 연산 등을 한다.
 
-Most statements in JavaScript conclude with a semicolon (`;`) at the end.
-
-The statement `a = b * 2;` tells the computer, roughly, to get the current value stored in the variable `b`, multiply that value by `2`, then store the result back into another variable we call `a`.
-
-Programs are just collections of many such statements, which together describe all the steps that it takes to perform your program's purpose.
+JS에서 `;` 는 문장의 끝을 나타내고, 완전히 필수는 아니지만 꼭 작성하길 권장한다.
 
 ### Expressions
 
-Statements are made up of one or more *expressions*. An expression is any reference to a variable or value, or a set of variable(s) and value(s) combined with operators.
-
-For example:
-
-```js
-a = b * 2;
-```
-
-This statement has four expressions in it:
-
-* `2` is a *literal value expression*
-* `b` is a *variable expression*, which means to retrieve its current value
-* `b * 2` is an *arithmetic expression*, which means to do the multiplication
-* `a = b * 2` is an *assignment expression*, which means to assign the result of the `b * 2` expression to the variable `a` (more on assignments later)
-
-A general expression that stands alone is also called an *expression statement*, such as the following:
-
-```js
-b * 2;
-```
-
-This flavor of expression statement is not very common or useful, as generally it wouldn't have any effect on the running of the program -- it would retrieve the value of `b` and multiply it by `2`, but then wouldn't do anything with that result.
-
-A more common expression statement is a *call expression* statement (see "Functions"), as the entire statement is the function call expression itself:
+한 문(statement)은 하나 혹은 여러 개의 *표현식(expressions)* 으로 구성된다.
+단순한 숫자, 값, 혹은 그에 대한 참조와 그것들의 연산 및 조합 등 거의 모든 것이 표현식이다.
+이 중에서 다음과 같은 코드는
 
 ```js
 alert( a );
 ```
 
+함수를 *호출(call)* 하는 표현문(expression statement)이라고 한다.
+
 ### Executing a Program
 
-How do those collections of programming statements tell the computer what to do? The program needs to be *executed*, also referred to as *running the program*.
+Statements는 *실행(executed)==프로그램 실행(running the program)* 되어야 컴퓨터가 작업을 수행한다.
+`a = b * 2` 같은 소스코드는 개발자에게 의미가 있는 것이고, 컴퓨터가 이해하기 위해서는
+*인터프리터(interpreter)* 또는 *컴파일러(compiler)* 로 코드를 번역해야 한다.
 
-Statements like `a = b * 2` are helpful for developers when reading and writing, but are not actually in a form the computer can directly understand. So a special utility on the computer (either an *interpreter* or a *compiler*) is used to translate the code you write into commands a computer can understand.
-
-For some computer languages, this translation of commands is typically done from top to bottom, line by line, every time the program is run, which is usually called *interpreting* the code.
-
-For other languages, the translation is done ahead of time, called *compiling* the code, so when the program *runs* later, what's running is actually the already compiled computer instructions ready to go.
-
-It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.
-
-**Note:** For more information on JavaScript compiling, see the first two chapters of the *Scope & Closures* title of this series.
+흔히 JS가 컴파일없이 1줄씩 그 때 그 때 실행되는 것으로 오해하는데,
+JS는 간단히 컴파일을 한 뒤에 프로그램을 실행한다. 따라서 static error와 runtime error가 모두 발생할 수 있다.
 
 ## Try It Yourself
 
-This chapter is going to introduce each programming concept with simple snippets of code, all written in JavaScript (obviously!).
-
-It cannot be emphasized enough: while you go through this chapter -- and you may need to spend the time to go over it several times -- you should practice each of these concepts by typing the code yourself. The easiest way to do that is to open up the developer tools console in your nearest browser (Firefox, Chrome, IE, etc.).
-
-**Tip:** Typically, you can launch the developer console with a keyboard shortcut or from a menu item. For more detailed information about launching and using the console in your favorite browser, see "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). To type multiple lines into the console at once, use `<shift> + <enter>` to move to the next new line. Once you hit `<enter>` by itself, the console will run everything you've just typed.
-
-Let's get familiar with the process of running code in the console. First, I suggest opening up an empty tab in your browser. I prefer to do this by typing `about:blank` into the address bar. Then, make sure your developer console is open, as we just mentioned.
-
-Now, type this code and see how it runs:
-
-```js
-a = 21;
-
-b = a * 2;
-
-console.log( b );
-```
-
-Typing the preceding code into the console in Chrome should produce something like the following:
-
-<img src="fig1.png" width="500">
-
-Go on, try it. The best way to learn programming is to start coding!
+백문이불여일타. 치자.
+개발콘솔에 대한 좋은 자료를 첨부한다.
+"Mastering The Developer Tools Console"
+(http://blog.teamtreehouse.com/mastering-developer-tools-console)
 
 ### Output
 
-In the previous code snippet, we used `console.log(..)`. Briefly, let's look at what that line of code is all about.
-
-You may have guessed, but that's exactly how we print text (aka *output* to the user) in the developer console. There are two characteristics of that statement that we should explain.
-
-First, the `log( b )` part is referred to as a function call (see "Functions"). What's happening is we're handing the `b` variable to that function, which asks it to take the value of `b` and print it to the console.
-
-Second, the `console.` part is an object reference where the `log(..)` function is located. We cover objects and their properties in more detail in Chapter 2.
+`console.log(..)` 는 console 오브젝트에서 log 함수를 호출하는 것이다.
+`alert(..)` 는 JS 자체에서 제공하는 함수가 아니라 브라우저에서 제공하는(종속된) 함수이다.
 
 Another way of creating output that you can see is to run an `alert(..)` statement. For example:
 
-```js
-alert( b );
-```
-
-If you run that, you'll notice that instead of printing the output to the console, it shows a popup "OK" box with the contents of the `b` variable. However, using `console.log(..)` is generally going to make learning about coding and running your programs in the console easier than using `alert(..)`, because you can output many values at once without interrupting the browser interface.
-
-For this book, we'll use `console.log(..)` for output.
-
 ### Input
 
-While we're discussing output, you may also wonder about *input* (i.e., receiving information from the user).
-
-The most common way that happens is for the HTML page to show form elements (like text boxes) to a user that they can type into, and then using JS to read those values into your program's variables.
-
-But there's an easier way to get input for simple learning and demonstration purposes such as what you'll be doing throughout this book. Use the `prompt(..)` function:
-
+사용자로부터 입력은 `prompt(..)` 로 받을 수 있다.
+(여기서 리턴하는 것은 모두 문자열이다. 설령 숫자처럼 보일지라도.)
+다음과 같이 사용한다.
 ```js
 age = prompt( "Please tell me your age:" );
 
 console.log( age );
 ```
-
-As you may have guessed, the message you pass to `prompt(..)` -- in this case, `"Please tell me your age:"` -- is printed into the popup.
-
-This should look similar to the following:
-
-<img src="fig2.png" width="500">
-
-Once you submit the input text by clicking "OK," you'll observe that the value you typed is stored in the `age` variable, which we then *output* with `console.log(..)`:
-
-<img src="fig3.png" width="500">
-
-To keep things simple while we're learning basic programming concepts, the examples in this book will not require input. But now that you've seen how to use `prompt(..)`, if you want to challenge yourself you can try to use input in your explorations of the examples.
 
 ## Operators
 
